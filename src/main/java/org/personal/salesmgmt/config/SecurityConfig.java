@@ -14,18 +14,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final HttpRequestFilter httpRequestFilter;
 
+    private static final String[] AUTH_WHITELIST = {
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/v2/api-docs",
+            "/webjars/**"
+    };
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors()
                 .and()
                 .csrf()
+                .disable()
+                .exceptionHandling()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/sales/users/**").hasRole("USER")
-                .antMatchers("/api/sales/admin/**", "/api/sales/**").hasRole("ADMIN");
+                .antMatchers(AUTH_WHITELIST).permitAll()
+                .antMatchers("/api/sales/**").hasRole("ADMIN");
         http.addFilterBefore(httpRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }

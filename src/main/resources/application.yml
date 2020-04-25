@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: salesmgmt
+
+salesmgmt:
+  authentication:
+    url: http://localhost:8081/api/auth/authorize
+  swagger:
+    base-package: org.personal.salesmgmt
+    base-path: "/api.*"
+

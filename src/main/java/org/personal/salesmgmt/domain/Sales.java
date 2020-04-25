@@ -16,4 +16,6 @@ public class Sales {
     private Integer quantity;
 
     private Double totalSales;
+
+    public Sales(){}
 }
