@@ -1,1 +1,1 @@
-web: java -jar target/salesmgmt-authorization.war
+web:  java $JAVA_OPTS -jar webapp-runner.jar $WEBAPP_RUNNER_OPTS --port $PORT target/spring-jwt.war
