@@ -20,11 +20,11 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 
 * Go to the project directory.
     
-    ``cd sales-mgmt``
+    ``cd salesmgmt``
     
 * Build the project with specific profile. i.e: dev or prod. By default, profile will be dev if not specified.
 
-    ``./mvnw clean install -P{PROFILE_NAME}``
+    ``./mvnw clean package``
     
 * Go to the target directory.
     
@@ -37,7 +37,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 ## Run with docker 
 * Build the project using mvn command. 
 
-    ``./mvnw clean install -P{PROFILE_NAME} package``
+    ``./mvnw clean package``
     
 * Build and run the container. 
 
@@ -90,7 +90,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 ## Swagger documentation
 * Go to the browser
 
-   ``http://localhost:8080/swagger-ui.html``
+   ``http://localhost:8082/swagger-ui.html``
 
    ![API Endpoints](./images/salesmgmt-swaggerui.png)
 
