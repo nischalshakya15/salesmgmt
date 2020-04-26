@@ -2,8 +2,8 @@ FROM openjdk:8-jdk-alpine
 
 WORKDIR /usr/src/salesmgmt
 
-COPY target/salesmgmt-authorizatoin.war ./
+COPY target/salesmgmt-authorization.war ./
 
-EXPOSE 8080
+EXPOSE 8082
 
 ENTRYPOINT ["java", "-jar", "salesmgmt-authorization.war"]

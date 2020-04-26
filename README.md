@@ -41,7 +41,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
     
 * Build and run the container. 
 
-    ``docker-compose up``
+    ``docker-compose --compatibility up``
     
 ## Deploy in Heroku 
 * Build the project.
