@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  spring-jwt:
+    build: .
+    image: salesmgmt-authorization:v1
+    container_name: salesmgmt-authorization
+    command: java -jar /salesmgmt-authorization.war
+    ports:
+      - 8081:8081
+    deploy:
+      resources:
+        limits:
+          memory: 250m
+        reservations:
+          memory: 200m

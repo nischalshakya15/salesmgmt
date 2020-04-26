@@ -11,6 +11,7 @@
     <groupId>org.personal.salesmgmt</groupId>
     <artifactId>salesmgmt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>salesmgmt</name>
     <description>Sales management sample authorization module</description>
 
@@ -61,10 +62,16 @@
     </dependencies>
 
     <build>
+        <finalName>salesmgmt-authorization</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.2</version>
             </plugin>
         </plugins>
     </build>

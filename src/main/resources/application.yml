@@ -7,7 +7,7 @@ spring:
 
 salesmgmt:
   authentication:
-    url: http://localhost:8081/api/auth/authorize
+    url: https://spring-security-jwt-module.herokuapp.com/api/auth/authorize
   swagger:
     base-package: org.personal.salesmgmt
     base-path: "/api.*"
