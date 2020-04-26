@@ -1,1 +1,1 @@
-web:  java -jar --port $PORT target/spring-jwt.war
+web:  java --port $PORT target/salesmgmt-authorization.war
