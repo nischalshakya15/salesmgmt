@@ -11,4 +11,6 @@ salesmgmt:
   swagger:
     base-package: org.personal.salesmgmt
     base-path: "/api.*"
+  client:
+    client-urls: https://salesmgmt-authorization.herokuapp.com
 

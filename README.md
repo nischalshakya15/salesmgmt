@@ -16,7 +16,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 * IDE 
 
 ## Build and Run
-* git clone https://github.com/nischalshakya15/spring-security.git
+* git clone https://github.com/nischalshakya15/salesmgmt.git
 
 * Go to the project directory.
     
@@ -76,7 +76,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 
 * Deploy the war file in heroku. 
 
-    ``./mvnw clean -P{PROFILE_NAME} package heroku:deploy-war``
+    ``./mvnw clean package heroku:deploy-war``
 
 * Open the app. 
 
