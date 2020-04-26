@@ -3,6 +3,7 @@ package org.personal.salesmgmt.config;
 import lombok.RequiredArgsConstructor;
 import org.personal.salesmgmt.filters.HttpRequestFilter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -34,7 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll()
-                .antMatchers("/api/sales/**").hasRole("ADMIN");
+                .antMatchers(HttpMethod.GET, "/api/sales/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.POST, "/api/sales/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/sales/**").hasRole("ADMIN");
         http.addFilterBefore(httpRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }

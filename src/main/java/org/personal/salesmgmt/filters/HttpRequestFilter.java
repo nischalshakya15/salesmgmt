@@ -46,6 +46,8 @@ public class HttpRequestFilter extends OncePerRequestFilter {
 
             UserPrincipal userPrincipal = new ObjectMapper().readValue(Objects.requireNonNull(userPrincipalResponse.getBody()), UserPrincipal.class);
 
+            log.info("userPrincipal {}", userPrincipal);
+
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userPrincipal.getUsername(), bearerToken, userPrincipal.getAuthorities());
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authentication);
