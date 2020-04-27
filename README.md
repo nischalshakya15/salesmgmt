@@ -77,6 +77,11 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
           </configuration>
      </plugin>
     ```
+  or
+  
+  Create a Proc file in root directory of your project and add the following configuration.
+
+  ``web: java $JAVA_OPTS -cp target/classes:target/dependency/* org.personal.salesmgmt.SalesmgmtApplication`` 
 
 * Deploy the war file in heroku. 
 

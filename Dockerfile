@@ -4,6 +4,6 @@ WORKDIR /usr/src/salesmgmt
 
 COPY target/salesmgmt-authorization.war ./
 
-EXPOSE 8082
+EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "salesmgmt-authorization.war"]

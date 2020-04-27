@@ -7,7 +7,7 @@ services:
     container_name: salesmgmt-authorization
     command: java -jar /salesmgmt-authorization.war
     ports:
-      - 8082:8082
+      - 8080:8080
     deploy:
       resources:
         limits:
