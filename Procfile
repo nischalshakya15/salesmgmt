@@ -1,1 +1,0 @@
-web:  java -jar --port $PORT target/salesmgmt-authorization.war
