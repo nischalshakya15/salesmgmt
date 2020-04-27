@@ -43,11 +43,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 
     ``docker-compose --compatibility up``
     
-## Deploy in Heroku 
-* Build the project.
-    
-    ``./mvnw clean install -P{PROFILE_NAME}``
-    
+## Deploy in Heroku     
 * Add the following dependency in plugins section of pom.xml. 
 
     ```xml
@@ -76,9 +72,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
           <configuration>
               <appName>{APP_NAME}</appName>
                   <processTypes>
-                      <web>java $JAVA_OPTS -cp target/classes:target/dependency/*
-                                org.personal.salesmgmt.SalesmgmtApplication
-                       </web>
+                      <web>java $JAVA_OPTS -cp target/classes:target/dependency/* org.personal.salesmgmt.SalesmgmtApplication</web>
                   </processTypes>
           </configuration>
      </plugin>
