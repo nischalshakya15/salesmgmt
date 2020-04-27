@@ -62,21 +62,31 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 
     ``heroku login``
 
-* Create a Procfile in root directory of your project.
-
-    ``touch Procfile``
-
-* Add the following command in Procfile. 
-
-    ``web: java -jar target/{WAR_FILE_NAME}.war``
-
 * Create an app in heroku.
 
     ``heroku create --app {APP_NAME}``
 
+* Add the following configuration and define processTypes in heroku-maven-plugin section of pom.xml
+
+    ```xml
+     <plugin>
+          <groupId>com.heroku.sdk</groupId>
+          <artifactId>heroku-maven-plugin</artifactId>
+          <version>3.0.2</version>
+          <configuration>
+              <appName>{APP_NAME}</appName>
+                  <processTypes>
+                      <web>java $JAVA_OPTS -cp target/classes:target/dependency/*
+                                org.personal.salesmgmt.SalesmgmtApplication
+                       </web>
+                  </processTypes>
+          </configuration>
+     </plugin>
+    ```
+
 * Deploy the war file in heroku. 
 
-    ``./mvnw clean package heroku:deploy-war``
+    ``./mvnw clean heroku:deploy``
 
 * Open the app. 
 
@@ -113,6 +123,11 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
   ![Access User SaleResource](./images/userAccessSaleResource.png)
   
   ![AccessDenied User SaleResource](./images/userResourceAccessDenied.png)  
+
+## References 
+* https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku
+* https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin
+* https://devcenter.heroku.com/articles/setting-the-http-port-for-java-applications
 
 **Note: You can also use curl command as shown in Curl section of swagger-ui**
     
