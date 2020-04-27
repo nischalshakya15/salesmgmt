@@ -73,7 +73,7 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.2</version>
                 <configuration>
-                    <appName>gentle-inlet-72611</appName>
+                    <appName>spring-authorization-module</appName>
                 </configuration>
             </plugin>
         </plugins>
