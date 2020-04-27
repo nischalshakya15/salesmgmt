@@ -1,0 +1,8 @@
+server:
+  port: ${PORT}
+
+salesmgmt:
+  authorization:
+    url: ${AUTHORIZATION_URL}
+  client:
+    client-urls: ${CLIENT_URLS}

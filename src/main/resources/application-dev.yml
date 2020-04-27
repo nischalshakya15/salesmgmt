@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+salesmgmt:
+  authentication:
+    url: http://localhost:8081/api/auth/authorize
+  client:
+    client-urls: http://localhost:8080

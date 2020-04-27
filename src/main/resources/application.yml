@@ -1,16 +1,16 @@
-server:
-  port: ${PORT}
-
 spring:
   application:
     name: salesmgmt
 
+  profiles:
+    active: @spring.profiles.active@
+
 salesmgmt:
   authentication:
-    url: https://spring-security-jwt-module.herokuapp.com/api/auth/authorize
+    url: https://spring-authentication-module.herokuapp.com/api/auth/authorize
   swagger:
     base-package: org.personal.salesmgmt
     base-path: "/api.*"
   client:
-    client-urls: https://salesmgmt-authorization.herokuapp.com
+    client-urls: https://gentle-inlet-72611.herokuapp.com/
 

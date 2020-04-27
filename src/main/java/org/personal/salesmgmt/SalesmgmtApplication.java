@@ -20,13 +20,14 @@ public class SalesmgmtApplication {
                         "Application '{}' is running! Access URLs:\n\t" +
                         "Local: \t\t{}://localhost:{}\n\t" +
                         "External: \t{}://{}:{}\n\t" +
-                        "----------------------------------------------------------",
+                        "Profile(s): \t{}\n----------------------------------------------------------",
                 env.getProperty("spring.application.name"),
                 protocol,
                 env.getProperty("server.port"),
                 protocol,
                 InetAddress.getLocalHost().getHostAddress(),
-                env.getProperty("server.port"));
+                env.getProperty("server.port"),
+                env.getActiveProfiles());
     }
 
 }
