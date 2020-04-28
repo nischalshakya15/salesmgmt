@@ -1,9 +1,9 @@
 package org.personal.salesmgmt.exceptions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.personal.salesmgmt.exceptions.custom.RestTemplateClientException;
+import org.personal.salesmgmt.exceptions.custom.RestTemplateServerException;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResponseErrorHandler;
@@ -28,20 +28,23 @@ public class RestTemplateResponseErrorHandler implements ResponseErrorHandler {
     }
 
     @Override
-    @SneakyThrows
     public void handleError(ClientHttpResponse response) {
-
-
-
-        if (response.getStatusCode().is4xxClientError() || response.getStatusCode().is5xxServerError()) {
-            try {
+        try {
+            if (response.getStatusCode().is4xxClientError()) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(response.getBody()));
                 String httpBodyResponse = reader.lines().collect(Collectors.joining(""));
                 ApiException apiException = new ObjectMapper().readValue(httpBodyResponse, ApiException.class);
                 throw new RestTemplateClientException(apiException.getDebugMessage());
-            } catch (IOException ex) {
-                log.error(ex.getMessage());
             }
+
+            if (response.getStatusCode().is5xxServerError()) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(response.getBody()));
+                String httpBodyResponse = reader.lines().collect(Collectors.joining(""));
+                ApiException apiException = new ObjectMapper().readValue(httpBodyResponse, ApiException.class);
+                throw new RestTemplateServerException(apiException.getDebugMessage());
+            }
+        } catch (IOException ex) {
+            log.error(ex.getMessage());
         }
     }
 }

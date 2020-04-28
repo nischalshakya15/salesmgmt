@@ -2,6 +2,7 @@ package org.personal.salesmgmt.exceptions;
 
 import org.personal.salesmgmt.exceptions.custom.ResourceNotFoundException;
 import org.personal.salesmgmt.exceptions.custom.RestTemplateClientException;
+import org.personal.salesmgmt.exceptions.custom.RestTemplateServerException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -42,6 +43,12 @@ public class RestExceptionHandler {
     @ExceptionHandler(RestTemplateClientException.class)
     protected ResponseEntity<ApiException> handleRestTemplateClientException(RestTemplateClientException restTemplateClientException) {
         ApiException apiException = new ApiException(HttpStatus.BAD_REQUEST, restTemplateClientException.getMessage(), restTemplateClientException);
+        return buildResponseEntity(apiException);
+    }
+
+    @ExceptionHandler(RestTemplateServerException.class)
+    protected ResponseEntity<ApiException> handleRestTemplateServerException(RestTemplateServerException restTemplateServerException) {
+        ApiException apiException = new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, restTemplateServerException.getMessage(), restTemplateServerException);
         return buildResponseEntity(apiException);
     }
 

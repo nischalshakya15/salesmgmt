@@ -127,6 +127,10 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 * https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku
 * https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin
 * https://devcenter.heroku.com/articles/setting-the-http-port-for-java-applications
+* https://hellokoding.com/spring-resttemplate-error-handling/
+* https://www.baeldung.com/jackson-deserialization
+* https://vianneyfaivre.com/tech/spring-boot-how-to-handle-resttemplate-exceptions
+* https://www.baeldung.com/spring-rest-template-error-handling
 
 **Note: You can also use curl command as shown in Curl section of swagger-ui**
     

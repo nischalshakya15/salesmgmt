@@ -27,21 +27,8 @@ public class ApiException {
         timestamp = LocalDateTime.now();
     }
 
-    ApiException(HttpStatus status) {
+    public ApiException(String message, String debugMessage) {
         this();
-        this.status = status;
-    }
-
-    ApiException(HttpStatus status, Throwable ex) {
-        this();
-        this.status = status;
-        this.message = "Unexpected error";
-        this.debugMessage = ex.getLocalizedMessage();
-    }
-
-    public ApiException(HttpStatus status, String message, String debugMessage) {
-        this();
-        this.status = status;
         this.message = message;
         this.debugMessage = debugMessage;
     }
@@ -51,15 +38,5 @@ public class ApiException {
         this.status = status;
         this.message = message;
         this.debugMessage = ex.getLocalizedMessage();
-    }
-
-    @Override
-    public String toString() {
-        return "ApiException{" +
-                "status=" + status +
-                ", timestamp=" + timestamp +
-                ", message='" + message + '\'' +
-                ", debugMessage='" + debugMessage + '\'' +
-                '}';
     }
 }
