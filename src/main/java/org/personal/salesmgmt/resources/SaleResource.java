@@ -1,6 +1,7 @@
 package org.personal.salesmgmt.resources;
 
 import org.personal.salesmgmt.domain.Sales;
+import org.personal.salesmgmt.exceptions.custom.ResourceNotFoundException;
 import org.personal.salesmgmt.service.SaleService;
 import org.personal.salesmgmt.service.impl.SaleServiceImpl;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +44,7 @@ public class SaleResource {
         if (sale.isPresent()) {
             return ResponseEntity.ok().body(sale.get());
         }
-        throw new Exception("Sales with given id not found ");
+        throw new ResourceNotFoundException("Sales resource with given id not found");
     }
 
     @DeleteMapping("/{goodsId}")

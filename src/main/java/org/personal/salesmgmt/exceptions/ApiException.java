@@ -36,10 +36,20 @@ public class ApiException {
         this.debugMessage = ex.getLocalizedMessage();
     }
 
-    ApiException(HttpStatus status, String message, Throwable ex) {
+    public ApiException(HttpStatus status, String message, Throwable ex) {
         this();
         this.status = status;
         this.message = message;
         this.debugMessage = ex.getLocalizedMessage();
+    }
+
+    @Override
+    public String toString() {
+        return "ApiException{" +
+                "status=" + status +
+                ", timestamp=" + timestamp +
+                ", message='" + message + '\'' +
+                ", debugMessage='" + debugMessage + '\'' +
+                '}';
     }
 }

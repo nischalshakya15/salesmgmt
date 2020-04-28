@@ -1,15 +1,20 @@
 package org.personal.salesmgmt.exceptions;
 
+import org.personal.salesmgmt.exceptions.custom.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@ControllerAdvice
+import javax.servlet.ServletException;
+import java.io.IOException;
+
+@RestControllerAdvice
 public class RestExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler({RuntimeException.class, ServletException.class, IOException.class})
     protected ResponseEntity<ApiException> handleClassCastException(Exception exception) {
         ApiException apiException = new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage(), exception);
         return buildResponseEntity(apiException);
@@ -18,6 +23,18 @@ public class RestExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     protected ResponseEntity<ApiException> handleAccessDeniedException(AccessDeniedException accessDeniedException) {
         ApiException apiException = new ApiException(HttpStatus.BAD_REQUEST, accessDeniedException.getMessage(), accessDeniedException);
+        return buildResponseEntity(apiException);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    protected ResponseEntity<ApiException> handleResourceNotFoundException(ResourceNotFoundException resourceNotFoundException) {
+        ApiException apiException = new ApiException(HttpStatus.NOT_FOUND, resourceNotFoundException.getMessage(), resourceNotFoundException);
+        return buildResponseEntity(apiException);
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    protected ResponseEntity<ApiException> handleAuthenticationException(AuthenticationException authenticationException) {
+        ApiException apiException = new ApiException(HttpStatus.UNAUTHORIZED, authenticationException.getMessage(), authenticationException);
         return buildResponseEntity(apiException);
     }
 

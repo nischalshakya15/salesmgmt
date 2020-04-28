@@ -1,6 +1,7 @@
 package org.personal.salesmgmt.config;
 
 import lombok.RequiredArgsConstructor;
+import org.personal.salesmgmt.filters.HttpAuthenticationEntryPoint;
 import org.personal.salesmgmt.filters.HttpRequestFilter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,6 +18,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final HttpRequestFilter httpRequestFilter;
 
+    private final HttpAuthenticationEntryPoint httpAuthenticationEntryPoint;
+
     private static final String[] AUTH_WHITELIST = {
             "/swagger-resources/**",
             "/swagger-ui.html",
@@ -31,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .exceptionHandling()
+                .authenticationEntryPoint(httpAuthenticationEntryPoint)
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
