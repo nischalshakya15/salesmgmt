@@ -19,6 +19,7 @@ public class HttpAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authenticationException) {
+        log.error(authenticationException.getMessage());
         handlerExceptionResolver.resolveException(request, response, null, authenticationException);
     }
 }
