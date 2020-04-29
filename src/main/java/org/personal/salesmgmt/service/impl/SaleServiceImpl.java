@@ -1,6 +1,7 @@
 package org.personal.salesmgmt.service.impl;
 
 import org.personal.salesmgmt.domain.Sales;
+import org.personal.salesmgmt.exceptions.custom.ResourceNotFoundException;
 import org.personal.salesmgmt.service.SaleService;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class SaleServiceImpl implements SaleService {
 
     @Override
     public Sales save(Sales sale) {
+        sale.setTotalSales(sale.getPricePerUnit() * sale.getQuantity());
         sales.add(sale);
         return sales.get(sales.size() - 1);
     }
@@ -31,7 +33,11 @@ public class SaleServiceImpl implements SaleService {
     @Override
     public void remove(String goodsId) {
         Optional<Sales> optionalSale = findById(goodsId);
-        optionalSale.ifPresent(sales::remove);
+        if (optionalSale.isPresent()) {
+            sales.remove(optionalSale.get());
+        } else {
+            throw new ResourceNotFoundException("Sales with given Goods ID not found");
+        }
     }
 
     @Override

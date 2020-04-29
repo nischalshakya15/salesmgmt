@@ -24,7 +24,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
     
 * Build the project with specific profile. i.e: dev or prod. By default, profile will be dev if not specified.
 
-    ``./mvnw clean package``
+    ``./mvnw clean -P{PROFILE_NAME} package``
     
 * Go to the target directory.
     
@@ -37,7 +37,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 ## Run with docker 
 * Build the project using mvn command. 
 
-    ``./mvnw clean package``
+    ``./mvnw clean -P{PROFILE_NAME} package``
     
 * Build and run the container. 
 
@@ -85,7 +85,7 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 
 * Deploy the war file in heroku. 
 
-    ``./mvnw clean heroku:deploy``
+    ``./mvnw clean -P{PROFILE_NAME} heroku:deploy``
 
 * Open the app. 
 
@@ -131,6 +131,4 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 * https://www.baeldung.com/jackson-deserialization
 * https://vianneyfaivre.com/tech/spring-boot-how-to-handle-resttemplate-exceptions
 * https://www.baeldung.com/spring-rest-template-error-handling
-
-**Note: You can also use curl command as shown in Curl section of swagger-ui**
     

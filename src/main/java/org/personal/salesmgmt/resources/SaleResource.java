@@ -39,7 +39,7 @@ public class SaleResource {
     }
 
     @GetMapping("/{goodsId}")
-    public ResponseEntity<Sales> findById(@PathVariable String goodsId) throws Exception {
+    public ResponseEntity<Sales> findById(@PathVariable String goodsId) {
         Optional<Sales> sale = saleService.findById(goodsId);
         if (sale.isPresent()) {
             return ResponseEntity.ok().body(sale.get());
