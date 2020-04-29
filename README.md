@@ -130,5 +130,3 @@ We have two user (user and admin). User can view sales only whereas Admin can vi
 * https://hellokoding.com/spring-resttemplate-error-handling/
 * https://www.baeldung.com/jackson-deserialization
 * https://vianneyfaivre.com/tech/spring-boot-how-to-handle-resttemplate-exceptions
-* https://www.baeldung.com/spring-rest-template-error-handling
-    
