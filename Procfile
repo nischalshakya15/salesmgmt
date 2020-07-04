@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* org.personal.salesmgmt.SalesmgmtApplication
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.war -Dspring.profiles.active=prod
