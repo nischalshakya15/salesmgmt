@@ -13,6 +13,8 @@ public interface SaleService {
 
     void remove(String goodsId);
 
+    Sales update(Sales sale);
+
     Optional<Sales> findById(String goodsId);
 
 }

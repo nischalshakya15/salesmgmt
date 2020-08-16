@@ -5,13 +5,7 @@ import org.personal.salesmgmt.exceptions.custom.ResourceNotFoundException;
 import org.personal.salesmgmt.service.SaleService;
 import org.personal.salesmgmt.service.impl.SaleServiceImpl;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -36,6 +30,16 @@ public class SaleResource {
     public ResponseEntity<Sales> create(@RequestBody Sales sales) throws URISyntaxException {
         Sales sale = saleService.save(sales);
         return ResponseEntity.created(new URI("/api/sales")).body(sale);
+    }
+
+    @PutMapping("/{goodsId}")
+    public ResponseEntity<Sales> update(@RequestBody Sales sales, @PathVariable String goodsId) throws URISyntaxException {
+        Optional<Sales> sale = saleService.findById(goodsId);
+        if (sale.isPresent()) {
+            sales = saleService.update(sales);
+            return ResponseEntity.created(new URI("/api/sales")).body(sales);
+        }
+        throw new ResourceNotFoundException("Sales resource with given id not found");
     }
 
     @GetMapping("/{goodsId}")

@@ -41,6 +41,13 @@ public class SaleServiceImpl implements SaleService {
     }
 
     @Override
+    public Sales update(Sales sale) {
+        Optional<Sales> optionalSale = findById(sale.getGoodsId());
+        optionalSale.ifPresent(value -> sales.set(sales.indexOf(value), sale));
+        return sale;
+    }
+
+    @Override
     public Optional<Sales> findById(String goodsId) {
         return sales.stream().filter(s -> s.getGoodsId().equals(goodsId)).findAny();
     }
